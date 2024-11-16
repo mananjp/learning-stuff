@@ -83,8 +83,6 @@ def clear():
     e2.insert(0, "Enter number 2 (if needed)")
     e.insert(0, "Operator (+, -, x, /, %, sqrt, ln, pow)")
 
-
-
 calculate = Button(root, text="Calculate", command=calc)
 clear_button = Button(root, text="Clear", command=clear)
 calculate.grid(row=8, column=1, padx=10, pady=10)

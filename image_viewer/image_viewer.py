@@ -38,7 +38,7 @@ def forward():
         current_image += 1
     update_image()
 
-img = resize_image('images/logo.png', size=(400, 400))  # Initial image, resized
+img = resize_image('images/logo.png', size=(400, 400))  
 images = [img]
 current_image = 0
 

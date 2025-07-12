@@ -1,34 +1,5 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 2em;
-}
-html{
-  background-image: linear-gradient(to left top, #816bd1, #6e81df, #6195e6, #5ea7e9, #69b7e9, #59b6ef, #43b6f4, #20b5fa, #00a1ff, #008aff, #006dff, #6a41ff);
-}
-h1 {
-  color: #333;
-}
-input, button {
-  margin: 1em 0;
-  padding: 0.5em;
-  font-size: 1em;
-}
-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background: #0056b3;
-}
-#result {
-  margin-top: 2em;
-  font-weight: bold;
-  color: #222;
-
-  padding: 1em;
-  border-radius: 4px;
-  min-height: 2em;
+  padding: 3em;
+  
 }

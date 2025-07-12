@@ -6,22 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Company Profit Predictor</h1>
-    <p>Upload your company data in Excel format to predict future profits.</p>
-    <p>Ensure your Excel file has the following columns: <strong>date(mm/dd/yy), company name, profit</strong>.</p>
-  <input type="file" id="file-input" accept=".xlsx" />
-  <button id="analyze-btn">Analyze</button>
-  <div id="result"></div>
-  <div id="profitPlot" style="width: 100%; max-width: 900px; height: 500px;"></div>
-  <script src="xlsx.full.min.js"></script>
-
-<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luxon@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-<script src="app.js"></script>
+    <div id="root">
+      
+    <script type="module" src="./src/main.jsx"></script>
 </body>
 </html>

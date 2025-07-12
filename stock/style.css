@@ -1,7 +1,9 @@
 body {
   font-family: Arial, sans-serif;
   margin: 2em;
-  background: #f9f9f9;
+}
+html{
+  background-image: linear-gradient(to left top, #816bd1, #6e81df, #6195e6, #5ea7e9, #69b7e9, #59b6ef, #43b6f4, #20b5fa, #00a1ff, #008aff, #006dff, #6a41ff);
 }
 h1 {
   color: #333;
@@ -25,7 +27,7 @@ button:hover {
   margin-top: 2em;
   font-weight: bold;
   color: #222;
-  background: #e7f3ff;
+
   padding: 1em;
   border-radius: 4px;
   min-height: 2em;

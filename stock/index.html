@@ -7,8 +7,7 @@
 </head>
 <body>
   <h1>Company Profit Predictor</h1>
-  <p>By manan panchal</p>  
-  <p>Upload your company data in Excel format to predict future profits.</p>
+    <p>Upload your company data in Excel format to predict future profits.</p>
     <p>Ensure your Excel file has the following columns: <strong>date(mm/dd/yy), company name, profit</strong>.</p>
   <input type="file" id="file-input" accept=".xlsx" />
   <button id="analyze-btn">Analyze</button>
@@ -24,33 +23,5 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <script src="app.js"></script>
-
-
-  
-    
-
 </body>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBvyqJiHy9r3erRIRFxn_zlEUHQ84942yU",
-    authDomain: "stock-prediction-d3509.firebaseapp.com",
-    projectId: "stock-prediction-d3509",
-    storageBucket: "stock-prediction-d3509.firebasestorage.app",
-    messagingSenderId: "568826674414",
-    appId: "1:568826674414:web:085cdd4f4eee91e3a307ff",
-    measurementId: "G-X6W3CZHXL8"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </html>

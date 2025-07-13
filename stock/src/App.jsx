@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 
 import * as tf from '@tensorflow/tfjs';
-
+import { UserInfoIcons } from '../components/UserInfoIcons.jsx';
 const CompanyProfitPredictor = () => {
   const [file, setFile] = useState(null);
   const [data, setData] = useState([]);
@@ -372,7 +372,7 @@ const CompanyProfitPredictor = () => {
                 <Info className="h-4 w-4 mr-2" />
                 About
               </button>
-             
+
             </nav>
 
             {/* Mobile menu button */}
@@ -406,7 +406,7 @@ const CompanyProfitPredictor = () => {
                   <Info className="h-4 w-4 mr-2" />
                   About
                 </button>
-                
+
               </div>
             </div>
           )}
@@ -561,7 +561,7 @@ const CompanyProfitPredictor = () => {
                     <h3 className="font-medium text-slate-900">Smart Analytics</h3>
                     <p className="text-sm text-slate-600">Advanced statistical insights</p>
                   </div>
-                  
+
                 </div>
               </div>
             )}
@@ -629,7 +629,7 @@ const CompanyProfitPredictor = () => {
                   </h2>
                   <div ref={plotRef} className="w-full h-96"></div>
                   <div className="flex justify-center mt-4">
-                  <span className='text-red-500'>DISCLAIMER</span>: The chart generated using Plotly.js is completely based of calculations and predictions,it may get incorrect.
+                    <span className='text-red-500'>DISCLAIMER</span>: The chart generated using Plotly.js is completely based of calculations and predictions,it may get incorrect.
                   </div>
                 </div>
 
@@ -796,59 +796,27 @@ const CompanyProfitPredictor = () => {
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Information about developers of this project</h2>
               <hr />
-              <div className="flex pt-7 flex-row sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <div className="flex pt-7 flex-row sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-center">
-                      <img src="https://avatars.githubusercontent.com/u/187887332?v=4" className="h-8 w-8 rounded-full mr-2" />
-                      Manan Panchal (Backend)
-                    </h3>
-                    <p className="text-slate-600 mb-2">
-                      Implemented the backend logic and integrated TensorFlow.js to run neural networks directly in the browser, enabling "Upload-time" profit predictions without relying on external servers.
-                    </p>
-                    <div className="flex items-center space-x-3 mb-4">
-                      <span className="text-slate-700 font-medium">Links -</span>
-                      <a href="https://github.com/mananjp" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                          alt="GitHub"
-                          className="h-5 w-5 hover:opacity-80 align-middle"
-                        />
-                      </a>
-                      <a href="https://www.linkedin.com/in/manan-panchal-b45155374/" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                          alt="LinkedIn"
-                          className="h-5 w-5 hover:opacity-80 align-middle"
-                        />
-                      </a>
-                    </div>
+              
 
-                    <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-center">
-                      <img src="https://avatars.githubusercontent.com/u/189432138?v=4" className="h-8 w-8 rounded-full mr-2" />
-                      Ansh Dhanani (Frontend)
-                    </h3>
-                    <p className="text-slate-600 mb-2">
-                      Developed the complete frontend UI with a focus on performance and responsiveness. Ensured that all processing happens locally in the browser so that your sensitive financial data never leaves your device — guaranteeing full privacy and security.
-                    </p>
-                    <div className="flex items-center space-x-3">
-                      <span className="text-slate-700 font-medium">Links -</span>
-                      <a href="https://github.com/ansh-dhanani" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                          alt="GitHub"
-                          className="h-5 w-5 hover:opacity-80 align-middle"
-                        />
-                      </a>
-                      <a href="https://www.linkedin.com/in/ansh-dhanani-531073326/" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                          alt="LinkedIn"
-                          className="h-5 w-5 hover:opacity-80 align-middle"
-                        />
-                      </a>
-                    </div>
-                  </div>
+              <div className="flex pt-3 flex-row sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <div className="flex pt-7 w-full flex-row justify-between items-start sm:items-center space-x-4">
+                  <UserInfoIcons
+                avatar="https://avatars.githubusercontent.com/u/187887332?v=4"
+                name="Manan Panchal"
+                role="Backend developer"
+                email="mananpanchal@gmail.com"
+                info="Experienced backend developer specializing in TensorFlow.js and machine learning model development. Led multiple AI-driven projects focused on financial forecasting and data analysis."              
+                github="https://github.com/mananjp"
+                />
+                <UserInfoIcons
+                avatar="https://avatars.githubusercontent.com/u/189432138?v=4"
+                name="Ansh Dhanani"
+                role="frontend developer"
+                email="dhananiansh01@gmail.com"
+                info="frontend developer with expertise in React.js, Tailwind CSS, and UI/UX design. Passionate about creating intuitive and responsive web applications with modern JavaScript frameworks."              
+                github="https://github.com/Ansh-dhanani"
+                />
+                 
                 </div>
 
               </div>
@@ -856,7 +824,7 @@ const CompanyProfitPredictor = () => {
             </div>
           </div>
         )}
-      
+
       </div>
 
       {/* Footer */}

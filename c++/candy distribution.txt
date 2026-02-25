@@ -1,0 +1,16 @@
+vector<int> distributeCandies(double candies, int num_people) {
+	vector<int> res(num_people, 0);
+
+	double total = floor((-1 + sqrt(1 + 8 * candies)) / 2);
+	int round = floor(total / num_people);
+
+	for (int i = 1; i <= num_people; i++)
+	{
+		int first = i;
+		int last = first + num_people * (round - 1);
+		int inComplete = candies - (num_people+last) * (num_people + last - 1) / 2;
+		res[i - 1] = (first + last) * round / 2 + max(min(last + num_people, inComplete), 0);
+	}
+
+	return res;
+}

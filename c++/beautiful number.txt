@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+// Function to check if the product of digits is divisible by the sum of digits
+bool Div(int arr[], int size) {
+    int product = 1, sum = 0;
+
+    // Calculate the product and sum of digits
+    for (int i = 0; i < size; i++) {
+        product *= arr[i];
+        sum += arr[i];
+    }
+
+    // Avoid division by zero
+    if (sum == 0) {
+        return false;
+    }
+
+    // Check divisibility
+    return (product % sum == 0);
+}
+
+// Function to extract digits of a number into an array
+int digits(int x, int arr[]) {
+    int i = 0;
+
+    while (x > 0) {
+        int y = x % 10;  // Extract the last digit
+        x /= 10;         // Remove the last digit
+        arr[i++] = y;    // Store the digit in the array
+    }
+
+    return i; // Return the size of the array
+}
+
+int main() {
+    int l = 10, r = 20, count = 0;
+
+    // Loop through the range [l, r]
+    for (int num = l; num <= r; num++) {
+        int arr[100];
+        int size = digits(num, arr); // Extract digits of the number into arr
+
+        // Check if the condition in Div is satisfied
+        if (Div(arr, size)) {
+            count++;
+        }
+    }
+
+    // Output the result
+    cout << "Count of numbers satisfying the condition: " << count << endl;
+
+    return 0;
+}

@@ -1,0 +1,60 @@
+#include <iostream>
+using std::string;
+using namespace std;
+ class Employee{
+     private:
+        string Name;
+        string Company;
+        int age;
+     public:
+        void setName(string name)
+        {
+            Name = name;
+        }
+        string getName()
+        {
+            return Name;
+        }
+        void setCom(string com)
+        {
+            Company = com;
+        }
+        string getCom()
+        {
+            return Company;
+        }
+        void setAge(int Age)
+        {
+            age = Age;
+        }
+        int getAge()
+        {
+            return age;
+        }
+        void intro()
+        {
+            cout << "Name: "<< Name<<endl;
+            cout << "Company: "<< Company<<endl;
+            cout << "Age: "<< age<<endl;
+        }
+        Employee(string name, string company, int Age)
+        {
+            Name = name;
+            Company = company;
+            age = Age;
+        }
+    
+};
+
+
+
+int main() {
+    Employee e1= Employee("Manan","my company", 25);
+    e1.intro();
+    
+   
+    e1.setName("lol");
+    cout<<"another name: "<<e1.getName()<<endl;
+    
+    return 0;
+}

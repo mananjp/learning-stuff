@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+class Employee {
+    std::string name;
+    double basicSalary;
+    double bonus;
+
+public:
+    // Constructor with default argument for bonus
+    Employee(std::string name, double basicSalary, double bonus = 500) 
+        : name(name), basicSalary(basicSalary), bonus(bonus) {}
+
+    // Inline function to calculate the total salary
+    inline double calculateTotalSalary() const {
+        return basicSalary + bonus;
+    }
+
+    // Function to display the salary details
+    void displayTotalSalary() const {
+        std::cout << "Employee: " << name << ", Total Salary: " << calculateTotalSalary() << std::endl;
+    }
+};
+
+int main() {
+    std::vector<Employee> employees;
+    
+    // Creating Employee objects with different bonuses
+    employees.emplace_back("Alice", 5000);              // Using default bonus
+    employees.emplace_back("Bob", 6000, 700);           // Custom bonus
+    employees.emplace_back("Charlie", 5500);            // Using default bonus
+    employees.emplace_back("David", 6200, 800);         // Custom bonus
+    
+    // Displaying total salaries of all employees
+    for (const auto& emp : employees) {
+        emp.displayTotalSalary();
+    }
+
+    return 0;
+}

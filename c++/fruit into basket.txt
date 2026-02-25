@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+         unordered_map<int, int> basket;
+        int left = 0, maxFruits = 0;
+
+        for (int right = 0; right < fruits.size(); ++right) {
+            basket[fruits[right]]++; // Add current fruit to the basket
+
+            // If we have more than 2 types of fruit, adjust the window
+            while (basket.size() > 2) {
+                basket[fruits[left]]--;
+                if (basket[fruits[left]] == 0) {
+                    basket.erase(fruits[left]); // Remove fruit type with count 0
+                }
+                left++; // Shrink the window from the left
+            }
+
+            // Calculate the maximum number of fruits in the current window
+            maxFruits = max(maxFruits, right - left + 1);
+        }
+
+        return maxFruits;
+
+    }
+};

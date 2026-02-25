@@ -1,0 +1,86 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> searchMatrix(vector<vector<int>>& matrix, int target) {
+    vector<int> v1;
+    int rows = matrix.size(),
+        cols = matrix[0].size(),
+        row = 0, col = cols - 1;
+
+    while (row < rows && col >= 0) {
+        int cur = matrix[row][col];
+        if (cur == target){
+            v1.push_back(row); 
+            v1.push_back(col);  
+            return v1;
+        }
+        if (target > cur) row++;
+        else col--;
+    }
+
+
+    v1.push_back(-1);
+    v1.push_back(-1);
+    return v1;
+}
+
+int main() {
+    vector<vector<int>> v = {{1,3,5},{7,9,11},{13,15,17}};
+    int target = 17;
+    vector<int> tf = searchMatrix(v, target);
+    cout << tf[0] << " " << tf[1];
+    return 0;
+}
+
+/////////////////////////////////////////////////
+
+#include <iostream>
+using namespace std;
+
+bool bs(int arr[][3], int r, int c, int t)
+{
+
+    int top = 0, bottom = r - 1;
+    int row = -1;
+    
+    while (top <= bottom) {
+        int mid = (top + bottom) / 2;
+        if (t >= arr[mid][0] && t <= arr[mid][c - 1]) {
+            row = mid;
+            break;
+        } else if (t < arr[mid][0]) {
+            bottom = mid - 1;
+        } else {
+            top = mid + 1;
+        }
+    }
+
+    if (row == -1) return false;
+
+
+    int left = 0, right = c - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (arr[row][mid] == t) return true;
+        else if (arr[row][mid] < t) left = mid + 1;
+        else right = mid - 1;
+    }
+
+    return false;
+}
+
+int main()
+{
+    int arr[3][3] = {{1,2,3}, {4,5,6}, {7,8,9}};
+    
+    bool tf = bs(arr, 3, 3, 6);
+    if (tf) {
+        cout << "true";
+    } else {
+        cout << "false";
+    }
+
+    return 0;
+}
+

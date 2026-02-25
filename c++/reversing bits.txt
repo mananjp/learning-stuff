@@ -1,0 +1,14 @@
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+       uint32_t reversed = 0; // Variable to hold the reversed bits
+        for (int i = 0; i < 32; ++i) {
+            // Extract the least significant bit (LSB) from n and shift it to its reversed position
+            reversed = (reversed << 1) | (n & 1);
+            // Right shift n to process the next bit
+            n >>= 1;
+        }
+        return reversed;
+
+    }
+};

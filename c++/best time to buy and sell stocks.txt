@@ -1,0 +1,33 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+
+int main()
+{
+   vector<int> p  = {7,1,2,6,5};
+    int x=p[0];
+    for(int i=0; i<p.size(); i++)
+    {
+        if(p[i]>x)
+        {
+            
+        }
+        else{
+            x=p[i];
+        }
+        int y=p[i];
+          if(p[i]<y)
+        {
+            
+        }
+        else{
+            y=p[i];
+        }
+        int z = x-y;
+        cout<<z<<" ";
+        
+    }
+    
+}

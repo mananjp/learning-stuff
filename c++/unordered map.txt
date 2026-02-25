@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<int> freq(100, 0);  // Array of size 100 initialized to 0
+
+    // Read input and update frequency array
+    for (int i = 0; i < n; i++) {
+        int num;
+        cin >> num;
+        freq[num]++;  // Increment count for the given number
+    }
+
+    // Print frequency of numbers from 0 to 99
+    for (int i = 0; i < 100; i++) {
+        cout << freq[i] << " ";
+    }
+
+    return 0;
+}

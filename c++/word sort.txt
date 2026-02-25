@@ -1,0 +1,18 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+bool max_str(const string &a, const string &b) {
+    return a > b;  
+}
+int main() {
+    std::string words[5], word;
+    for(int i = 0; i < 5; i++){
+        cin >> word;
+        words[i] = word;
+    }
+    sort(words, words + 5, max_str);
+    for (int i = 0; i < 5; i++)
+        cout << words[i] << " ";
+    return 0;
+}

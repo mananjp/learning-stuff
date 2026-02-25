@@ -1,0 +1,111 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string c;
+    cout << "Products in inventory:" << endl;
+    cout << "1. Nails - $1" << endl;
+    cout << "2. Hammer - $5" << endl;
+    cout << "3. Tape - $2" << endl;
+    cout << "Do you want to increase or decrease the products in inventory (I/D): ";
+    cin >> c;
+
+    int arr[3] = {0, 0, 0};       // Inventory counts
+    int price[3] = {0, 0, 0};     // Total price for each product
+
+    while (c == "I" || c == "D") 
+    {
+        if (c == "I") 
+        {
+            cout << "Which product (1: Nails, 2: Hammer, 3: Tape): ";
+            int p;
+            cin >> p;
+
+            switch (p) 
+            {
+                case 1: // Nails
+                    arr[0]++;
+                    price[0] += 1;
+                    cout << "Nails added to inventory." << endl;
+                    break;
+
+                case 2: // Hammer
+                    arr[1]++;
+                    price[1] += 5;
+                    cout << "Hammer added to inventory." << endl;
+                    break;
+
+                case 3: // Tape
+                    arr[2]++;
+                    price[2] += 2;
+                    cout << "Tape added to inventory." << endl;
+                    break;
+
+                default:
+                    cout << "Invalid product!" << endl;
+            }
+
+            cout << "Do you want to add another product? (y/n): ";
+            string y_n;
+            cin >> y_n;
+            if (y_n == "n") break;
+        } 
+        else if (c == "D") 
+        {
+            cout << "Which product do you want to decrease (1: Nails, 2: Hammer, 3: Tape), or 0 to quit: ";
+            int p;
+            cin >> p;
+
+            if (p == 0) break;
+
+            switch (p) 
+            {
+                case 1: // Nails
+                    if (arr[0] > 0) {
+                        arr[0]--;
+                        price[0] -= 1;
+                        cout << "Nails removed from inventory." << endl;
+                    } else {
+                        cout << "No nails left in inventory to remove!" << endl;
+                    }
+                    break;
+
+                case 2: // Hammer
+                    if (arr[1] > 0) {
+                        arr[1]--;
+                        price[1] -= 5;
+                        cout << "Hammer removed from inventory." << endl;
+                    } else {
+                        cout << "No hammers left in inventory to remove!" << endl;
+                    }
+                    break;
+
+                case 3: // Tape
+                    if (arr[2] > 0) {
+                        arr[2]--;
+                        price[2] -= 2;
+                        cout << "Tape removed from inventory." << endl;
+                    } else {
+                        cout << "No tape left in inventory to remove!" << endl;
+                    }
+                    break;
+
+                default:
+                    cout << "Invalid product!" << endl;
+            }
+        }
+
+        cout << "Do you want to increase or decrease more products (I/D), or quit (Q): ";
+        cin >> c;
+        if (c == "Q") break;
+    }
+
+    cout << "Final Inventory:" << endl;
+    cout << "Nails: " << arr[0] << " | Total Price: $" << price[0] << endl;
+    cout << "Hammer: " << arr[1] << " | Total Price: $" << price[1] << endl;
+    cout << "Tape: " << arr[2] << " | Total Price: $" << price[2] << endl;
+
+    return 0;
+}

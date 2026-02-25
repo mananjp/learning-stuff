@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+// Define the Node structure
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    // Constructor to initialize the node
+    Node(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+// Function to insert a node in the tree
+Node* insertNode(Node* root, int value) {
+    if (root == nullptr) {
+        return new Node(value); // Create a new node if tree is empty
+    }
+
+    if (value < root->data) {
+        root->left = insertNode(root->left, value); // Insert in left subtree
+    } else {
+        root->right = insertNode(root->right, value); // Insert in right subtree
+    }
+
+    return root;
+}
+
+// Function to perform in-order traversal
+void inOrderTraversal(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+    inOrderTraversal(root->left); // Visit left subtree
+    cout << root->data << " ";   // Print node value
+    inOrderTraversal(root->right); // Visit right subtree
+}
+
+int main() {
+    Node* root = nullptr;
+
+    // Sample data to construct the tree
+    int data[] = {50, 30, 20, 40, 70, 60, 80};
+
+    // Insert data into the tree
+    for (int value : data) {
+        root = insertNode(root, value);
+    }
+
+    // Print the tree in in-order traversal
+    cout << "In-order Traversal: ";
+    inOrderTraversal(root);
+    cout << endl;
+
+    return 0;
+}

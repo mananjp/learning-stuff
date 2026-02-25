@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+
+    // Sorting the array (assuming input isn't already sorted)
+    sort(v.begin(), v.end());
+
+    int q;
+    cin >> q;
+    while (q--) {
+        int x;
+        cin >> x;
+        
+        auto it = lower_bound(v.begin(), v.end(), x);
+        
+        if (it != v.end() && *it == x) {
+            cout << "Yes " << (it - v.begin() + 1) << endl; // 1-based index
+        } else {
+            cout << "No " << (it - v.begin() + 1) << endl; // 1-based insertion index
+        }
+    }
+
+    return 0;
+}

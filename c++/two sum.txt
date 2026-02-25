@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <utility> // For std::pair
+
+using namespace std;
+
+
+std::pair<int, int> twoSum(const vector<int>& nums, int target) {
+    unordered_map<int, int> numMap; // Maps number to its index
+
+    for (int i = 0; i < nums.size(); ++i) {
+        int complement = target - nums[i]; // Find the complement needed for the sum
+
+    
+        if (numMap.find(complement) != numMap.end()) {
+            return std::make_pair(numMap[complement], i); // Return indices as a pair
+        }
+
+        // to store the current number and its index in the map
+        numMap[nums[i]] = i;
+    }
+
+    // If no pair is foun then return an invalid pair
+    return std::make_pair(-1, -1);
+}
+
+int main() {
+    vector<int> vec = {2, 7, 11, 15}; 
+    int target = 9;
+
+
+    std::pair<int, int> result = twoSum(vec, target);
+
+  
+    if (result.first != -1) {
+        cout << "Indices: " << result.first << ", " << result.second << "\n";
+        cout << "Numbers: " << vec[result.first] << ", " << vec[result.second] << "\n";
+    } else {
+        cout << "No two numbers add up to the target.\n";
+    }
+
+    return 0;
+}

@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+bool canArrange(int arr[], int k,int n)
+{
+    if(n%2==1) return false;
+    int count=0;
+    int visited[n]={0};
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if((arr[i]+arr[j])%k==0 && visited[i]==0 && visited[j]==0)
+            {
+                count++;
+                visited[i]=1;
+                visited[j]=1;
+                cout<<arr[i]<<" "<<arr[j]<<endl;
+            }
+        }
+    }
+    if(count%2==1)
+    {
+        return true;
+    }
+    else return false;
+}
+
+
+int main()
+{
+    int arr[]={92,75,65,48,45,35};
+    int s = sizeof(arr)/sizeof(arr[0]);
+    int K =10;
+    bool tf = canArrange(arr, K,s);
+    
+    if(tf)
+    {
+        cout<<"True"<<endl;
+    }
+    else{
+        cout<<"False"<<endl;
+    }
+}

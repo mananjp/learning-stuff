@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    int rollNumber;
+    string name;
+    int marks[3];
+
+public:
+    // Default Constructor
+    Student() {
+        rollNumber = 0;
+        name = "N/A";
+        for (int i = 0; i < 3; i++) {
+            marks[i] = 0;
+        }
+    }
+
+    // Parameterized Constructor
+    Student(int r, string n, int m[3]) {
+        rollNumber = r;
+        name = n;
+        for (int i = 0; i < 3; i++) {
+            marks[i] = m[i];
+        }
+    }
+
+    // Member function to display student details
+    void displayDetails() {
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Name: " << name << endl;
+        cout << "Marks: ";
+        for (int i = 0; i < 3; i++) {
+            cout << marks[i] << " ";
+        }
+        cout << endl;
+    }
+
+    // Member function to calculate average marks
+    double calculateAverage() {
+        int total = 0;
+        for (int i = 0; i < 3; i++) {
+            total += marks[i];
+        }
+        return total / 3.0;
+    }
+};
+
+int main() {
+    // Create an array of Student objects using both constructors
+    Student students[2];
+
+    // First student: Default constructor
+    students[0] = Student();
+
+    // Second student: Parameterized constructor
+    int marks[] = {85, 90, 95};
+    students[1] = Student(101, "John Doe", marks);
+
+    // Display details and average marks for all students
+    for (int i = 0; i < 2; i++) {
+        cout << "Student " << i + 1 << " Details:" << endl;
+        students[i].displayDetails();
+        cout << "Average Marks: " << students[i].calculateAverage() << endl;
+        cout << "------------------------" << endl;
+    }
+
+    return 0;
+}

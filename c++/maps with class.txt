@@ -1,0 +1,108 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+class BankAccount {
+private:
+    int accountNumber;
+    std::string name;
+    double balance;
+    static int totalAccounts; // Static data member
+
+public:
+    // Constructor
+    BankAccount(int accNum, const std::string& accName, double accBalance)
+        : accountNumber(accNum), name(accName), balance(accBalance) {
+        totalAccounts++;
+    }
+
+    // Getter methods
+    int getAccountNumber() const {
+        return accountNumber;
+    }
+
+    const std::string& getName() const {
+        return name;
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+
+    // Method to deposit money
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            std::cout << "Deposited " << amount << " to account " << accountNumber << ".\n";
+        } else {
+            std::cout << "Invalid deposit amount.\n";
+        }
+    }
+
+    // Method to withdraw money
+    bool withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+            std::cout << "Withdrawn " << amount << " from account " << accountNumber << ".\n";
+            return true;
+        } else {
+            std::cout << "Invalid withdrawal or insufficient balance.\n";
+            return false;
+        }
+    }
+
+    // Friend function for transferring money
+    friend void transferMoney(std::map<int, BankAccount>& accounts, int fromAcc, int toAcc, double amount);
+
+    // Static method to get total accounts
+    static int getTotalAccounts() {
+        return totalAccounts;
+    }
+};
+
+// Initialize static member
+int BankAccount::totalAccounts = 0;
+
+// Friend function definition
+void transferMoney(std::map<int, BankAccount>& accounts, int fromAcc, int toAcc, double amount) {
+    auto fromIt = accounts.find(fromAcc);
+    auto toIt = accounts.find(toAcc);
+
+    if (fromIt != accounts.end() && toIt != accounts.end() && amount > 0) {
+        if (fromIt->second.withdraw(amount)) {
+            toIt->second.deposit(amount);
+            std::cout << "Transferred " << amount << " from account " << fromAcc
+                      << " to account " << toAcc << ".\n";
+        } else {
+            std::cout << "Transfer failed due to insufficient balance.\n";
+        }
+    } else {
+        std::cout << "Invalid accounts or transfer amount.\n";
+    }
+}
+
+// Main function to demonstrate functionality
+int main() {
+    std::map<int, BankAccount> accounts;
+
+    // Creating accounts using emplace
+    accounts.emplace(1001, BankAccount(1001, "Alice", 5000.0));
+    accounts.emplace(1002, BankAccount(1002, "Bob", 3000.0));
+    accounts.emplace(1003, BankAccount(1003, "Charlie", 7000.0));
+
+    // Display total accounts
+    std::cout << "Total accounts created: " << BankAccount::getTotalAccounts() << "\n";
+
+    // Transfer money between accounts
+    transferMoney(accounts, 1001, 1002, 1500.0);
+    transferMoney(accounts, 1002, 1003, 500.0);
+
+    // Display account details after transactions
+    for (const auto& [accNum, account] : accounts) {
+        std::cout << "Account Number: " << account.getAccountNumber()
+                  << ", Name: " << account.getName()
+                  << ", Balance: " << account.getBalance() << "\n";
+    }
+
+    return 0;
+}

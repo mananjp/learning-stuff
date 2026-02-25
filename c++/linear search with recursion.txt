@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int ls(int idx, int k, int arr[])
+{
+    if(arr[idx-1]==k)
+    {
+        return idx-1;
+    }
+    return ls(idx-1, k,arr);
+}
+int main()
+{
+    int arr[] = {3,1,2,4,5};
+    int x = ls(5,2,arr);
+    if(x!=-1)
+    {
+        cout<<x;
+    }
+    else{
+        cout<<"not found";
+    }
+}

@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+void display(vector<int> v)
+{
+    for(auto n : v)
+    {
+        cout << n <<" ";
+        
+    }
+    cout<<endl;
+    
+}
+void reverse(vector<int> v)
+{
+    for (std::vector<int>::reverse_iterator rit = v.rbegin(); rit!=v.rend(); rit++)
+    {
+        cout << *rit<<" ";
+    }
+    cout<<endl;
+}
+void max(vector<int> v)
+{
+    auto maxIt = max_element(v.begin(), v.end());
+    cout << "Max element is: " << *maxIt << endl;
+}
+
+int main()
+{
+    vector<int> vec;
+    
+    for(int i=0; i<5; i++)
+    {
+        vec.push_back(i);
+    }
+    display(vec);
+    reverse(vec);
+    max(vec);
+    
+}

@@ -1,0 +1,105 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+class Box {
+private:
+    int len = 0;
+    int wid = 0;
+    int hei = 0;
+
+public:
+    // Default Constructor (needed for Box temp;)
+    Box() {}
+
+    // Parameterized Constructor
+    Box(int l, int b, int h) : len(l), wid(b), hei(h) {}
+
+    // Getters
+    int getBreadth() { return wid; }
+    int getLength() { return len; }
+    int getHeight() { return hei; }
+
+    // Calculate Volume (prevent integer overflow)
+    long long CalculateVolume() {
+        return (long long)len * wid * hei;
+    }
+
+    // Overloading '<' Operator
+    bool operator<(const Box &b) const {
+        if (len < b.len) return true;
+        if (len == b.len && wid < b.wid) return true;
+        if (len == b.len && wid == b.wid && hei < b.hei) return true;
+        return false;
+    }
+
+    // Overloading Assignment Operator (needed for temp = NewBox;)
+    Box& operator=(const Box &b) {
+        if (this != &b) { // Avoid self-assignment
+            len = b.len;
+            wid = b.wid;
+            hei = b.hei;
+        }
+        return *this;
+    }
+
+    // Overloading '<<' for Printing (needed for cout << temp;)
+    friend ostream &operator<<(ostream &out, const Box &b) {
+        out << b.len << " " << b.wid << " " << b.hei;
+        return out;
+    }
+};
+
+
+
+void check2()
+{
+	int n;
+	cin>>n;
+	Box temp;
+	for(int i=0;i<n;i++)
+	{
+		int type;
+		cin>>type;
+		if(type ==1)
+		{
+			cout<<temp<<endl;
+		}
+		if(type == 2)
+		{
+			int l,b,h;
+			cin>>l>>b>>h;
+			Box NewBox(l,b,h);
+			temp=NewBox;
+			cout<<temp<<endl;
+		}
+		if(type==3)
+		{
+			int l,b,h;
+			cin>>l>>b>>h;
+			Box NewBox(l,b,h);
+			if(NewBox<temp)
+			{
+				cout<<"Lesser\n";
+			}
+			else
+			{
+				cout<<"Greater\n";
+			}
+		}
+		if(type==4)
+		{
+			cout<<temp.CalculateVolume()<<endl;
+		}
+		if(type==5)
+		{
+			Box NewBox(temp);
+			cout<<NewBox<<endl;
+		}
+
+	}
+}
+
+int main()
+{
+	check2();
+}
